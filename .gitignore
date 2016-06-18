@@ -1,6 +1,6 @@
 # ---------------[ Unity generated ]------------------ #
 Temp/
-Obj/
+#Obj/
 UnityGenerated/
 */Library
 mainproject/Assets/Packages
