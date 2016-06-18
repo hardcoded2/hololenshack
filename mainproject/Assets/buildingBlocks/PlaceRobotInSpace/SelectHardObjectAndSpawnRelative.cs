@@ -15,25 +15,45 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 	{
 		recognizer = new GestureRecognizer();
 		recognizer.TappedEvent += RecognizerOnTappedEvent;
+		recognizer.SetRecognizableGestures(GestureSettings.Tap);
 		recognizer.StartCapturingGestures();
-		spawn(new Vector3(0, 0.91f, -9.59f));
+		//FakeSpawn();
+	}
+
+	[ContextMenu("FakeSpawn")]
+	void FakeSpawn()
+	{
+		//note: transform.up not working the way I expect
+		var camDirection = Camera.main.transform.up *0.91f + new Vector3(0f, 0f, -9.59f);
+		spawn(camDirection);
 	}
 
 	private void RecognizerOnTappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
 	{
-		var hit = new RaycastHit();
+		//Debug.Log("Recognized Gesture headray:"+JsonUtility.ToJson(headRay));
+		RaycastHit hit;
 		//if (Physics.Raycast(headPosition, gazeDirection, out hitInfo,
 		//30.0f, SpatialMapping.PhysicsRaycastMask))
 		//layerMask:SpatialMapping.PhysicsRaycastMask
-		if(Physics.Raycast(headRay, out hit))
-			spawn(hit.transform.position + offsetFromTarget);
+		
+		//FakeSpawn();
+		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 30.0f, SpatialMapping.PhysicsRaycastMask))
+			spawn(hit.point + offsetFromTarget);
 	}
-
-	private void spawn(Vector3 positionToSpawnAt)
-	{
+	/*
+	 * 
+		Debug.Log("Spawn");
 		var spawned = _spawnedPrefab ?? Instantiate(_prefabToSpawn);
 		spawned.transform.position = positionToSpawnAt;
 		spawned.transform.LookAt(Camera.main.transform.position);
 		_spawnedPrefab = spawned;
+	 */
+	private void spawn(Vector3 positionToSpawnAt)
+	{
+		if(_spawnedPrefab != null) Destroy(_spawnedPrefab);
+
+		_spawnedPrefab = Instantiate(_prefabToSpawn);//GameObject.CreatePrimitive(PrimitiveType.Cube);
+		_spawnedPrefab.transform.localScale = 0.25f*Vector3.one;
+		_spawnedPrefab.transform.position = positionToSpawnAt;
 	}
 }
