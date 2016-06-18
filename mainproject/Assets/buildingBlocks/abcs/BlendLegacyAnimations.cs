@@ -55,13 +55,13 @@ public class BlendLegacyAnimations : MonoBehaviour
 				charToAnimation.Add(animationToLetter.letter, animationToLetter.anim);
 			}*/
 		}
-
+		
 		public IEnumerator SayWord(string word, Animation whatToPlayOn)
 		{
 			var lastLetterWasSpace = false;
 			foreach (var letter in word)
 			{
-				if(letter == ' ')
+				if(!char.IsLetter(letter))
 				{
 					yield return new WaitForSeconds(pauseBetweenWords);
 					lastLetterWasSpace = true;
