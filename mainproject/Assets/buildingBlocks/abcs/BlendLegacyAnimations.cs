@@ -18,11 +18,11 @@ public class BlendLegacyAnimations : MonoBehaviour
 	{
 		_animation = GetComponent<Animation>();
 		youGotTold.Init();
-		StartCoroutine(youGotTold.SayWord(textToSay, _animation));
+		//StartCoroutine(youGotTold.SayWord(textToSay, _animation));
 
 	}
 
-	void SayWordFromVoiceRecgonition(string word)
+	public void SayWordFromVoiceRecgonition(string word)
 	{
 		StartCoroutine(youGotTold.SayWord(word, _animation));
 	}
