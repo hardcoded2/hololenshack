@@ -3,7 +3,9 @@ using UnityEngine.VR.WSA.Input;
 
 public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 {
+#pragma warning disable 649
 	[SerializeField] private GameObject _prefabToSpawn;
+#pragma warning restore 649
 	private GameObject _spawnedPrefab;
 	[SerializeField] private readonly Vector3 offsetFromTarget = new Vector3(.5f, 0f, 0f);
 
