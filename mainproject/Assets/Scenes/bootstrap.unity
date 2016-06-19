@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfd3e8c5397d6a42b5eed1d8ef8a292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Visualizer: {fileID: 0}
+  _Visualizer: {fileID: 1886095929}
 --- !u!4 &493590861
 Transform:
   m_ObjectHideFlags: 0
@@ -1078,6 +1078,10 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1886095929 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100612, guid: 9be643091946d1649b383d0788495016, type: 3}
+  m_PrefabInternal: {fileID: 1031236405}
 --- !u!1 &2041268699
 GameObject:
   m_ObjectHideFlags: 0
