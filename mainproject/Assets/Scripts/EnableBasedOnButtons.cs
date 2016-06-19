@@ -28,10 +28,13 @@ public class EnableBasedOnButtons : MonoBehaviour
 	}
 	private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
 	{
+		Debug.Log("keyword recognized:"+args.text);
 		System.Action keywordAction;
 		if(keywords.TryGetValue(args.text, out keywordAction))
 		{
 			keywordAction.Invoke();
+			keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
+			keywordRecognizer.Stop();
 		}
 	}
 

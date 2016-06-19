@@ -176,6 +176,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95000013902053632, guid: ba05b6d28aa6c72409faf195e7b3329f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba05b6d28aa6c72409faf195e7b3329f, type: 2}
   m_IsPrefabParent: 0
@@ -187,6 +192,11 @@ Transform:
 --- !u!1 &260628737 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011632468026, guid: ba05b6d28aa6c72409faf195e7b3329f,
+    type: 2}
+  m_PrefabInternal: {fileID: 260628735}
+--- !u!95 &260628738 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95000013902053632, guid: ba05b6d28aa6c72409faf195e7b3329f,
     type: 2}
   m_PrefabInternal: {fileID: 260628735}
 --- !u!1 &348169738
@@ -536,8 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5279bc90ffd8d294b8202011a0800104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animsSupported: []
-  toPlayOn: {fileID: 0}
+  animsSupported:
+  - phrase: will warriors win
+    triggerToUse: warriors
+  - phrase: what weather like
+    triggerToUse: weather
+  toPlayOn: {fileID: 260628738}
 --- !u!1 &1756338427
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2081541787}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1756338429
 MonoBehaviour:
@@ -648,8 +662,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1194845609}
   - {fileID: 1756338428}
+  - {fileID: 1194845609}
   m_Father: {fileID: 2041268700}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

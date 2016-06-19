@@ -9,7 +9,7 @@ public class PlayAnimationWhenRecognizedPhraseHeard : MonoBehaviour
 	public List<WrapAnim> animsSupported;
 	private KeywordRecognizer keywordRecognizer;
 	private readonly Dictionary<string, string> stringToTriggerName = new Dictionary<string, string>();
-	[SerializeField] private Animation toPlayOn;
+	[SerializeField] private Animator toPlayOn;
 	// Use this for initialization
 	private void Start()
 	{
@@ -28,7 +28,7 @@ public class PlayAnimationWhenRecognizedPhraseHeard : MonoBehaviour
 	private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
 	{
 		string trigger;
-		if(stringToTriggerName.TryGetValue(args.text, out trigger))
+		if(stringToTriggerName.TryGetValue(args.text, out trigger)) { }
 			toPlayOn.GetComponent<Animator>().SetTrigger(trigger);
 	}
 
