@@ -29,8 +29,10 @@ public class WorldCursor : MonoBehaviour
     private void Recognizer_TappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
     {
         RaycastHit hitInfo;
+	    Debug.Log("Tapped");
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo))
         {
+			Debug.Log("Hit");
             GameObject hitObj = hitInfo.collider.gameObject;
 
             if(hitObj)
