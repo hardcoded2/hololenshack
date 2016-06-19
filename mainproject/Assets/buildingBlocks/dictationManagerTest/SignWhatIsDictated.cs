@@ -21,12 +21,6 @@ public class SignWhatIsDictated : MonoBehaviour
 
 	public void OnEnable()
 	{
-		StartCoroutine(waitThenEnable());
-	}
-
-	IEnumerator waitThenEnable()
-	{
-		yield return new WaitForSeconds(3f);
 		dictationRecognizer = new DictationRecognizer(ConfidenceLevel.High, DictationTopicConstraint.Dictation);
 		dictationRecognizer.Start();
 		dictationRecognizer.DictationResult += DictationRecognizerOnDictationResult;
@@ -36,6 +30,7 @@ public class SignWhatIsDictated : MonoBehaviour
 		int unused;
 		Microphone.GetDeviceCaps(deviceName, out unused, out samplingRate);
 	}
+
 	public void OnDisable()
 	{
 		dictationRecognizer.DictationResult -= DictationRecognizerOnDictationResult;
