@@ -12,6 +12,9 @@ public class EnableBasedOnButtons : MonoBehaviour
 	Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 	KeywordRecognizer keywordRecognizer;
 
+    public GameObject canvasGO;
+    public GameObject cursorGO;
+
 	//listen for me
 	//hear for me
 	public void OnEnable()
@@ -32,24 +35,32 @@ public class EnableBasedOnButtons : MonoBehaviour
 		System.Action keywordAction;
 		if(keywords.TryGetValue(args.text, out keywordAction))
 		{
-			keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
-			keywordRecognizer.Stop();
-			keywordRecognizer.Dispose();
-			PhraseRecognitionSystem.Shutdown();
-			gameObject.SetActive(false);
-			keywordAction.Invoke();
+            keywordAction.Invoke();
 		}
 	}
-
+    public void shutdown()
+    {
+        if (keywordRecognizer != null) {
+        keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
+            keywordRecognizer.Stop();
+            keywordRecognizer.Dispose();
+        }
+        PhraseRecognitionSystem.Shutdown();
+        gameObject.SetActive(false);
+        canvasGO.SetActive(false);
+        cursorGO.SetActive(false);
+    }
 	public void ListenForMe()
 	{
-		teachMeToSignGO.SetActive(false);
+        shutdown();
+        teachMeToSignGO.SetActive(false);
 		listenForMeGO.SetActive(true);
 	}
 
 	public void TeachMeToSign()
 	{
-		teachMeToSignGO.SetActive(true);
+        shutdown();
+        teachMeToSignGO.SetActive(true);
 		listenForMeGO.SetActive(false);
 	}
 	public void OnDisable()
