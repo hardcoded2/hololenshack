@@ -14,6 +14,12 @@ public class SignWhatIsDictated : MonoBehaviour
 	// Use this for initialization
 	private void Start()
 	{
+		
+		//StartRecording();
+	}
+
+	public void OnEnable()
+	{
 		dictationRecognizer = new DictationRecognizer(ConfidenceLevel.High, DictationTopicConstraint.Dictation);
 		dictationRecognizer.Start();
 		dictationRecognizer.DictationResult += DictationRecognizerOnDictationResult;
@@ -22,7 +28,11 @@ public class SignWhatIsDictated : MonoBehaviour
 		// Query the maximum frequency of the default microphone. Use 'unused' to ignore the minimum frequency.
 		int unused;
 		Microphone.GetDeviceCaps(deviceName, out unused, out samplingRate);
-		//StartRecording();
+	}
+
+	public void OnDisable()
+	{
+		dictationRecognizer.DictationResult -= DictationRecognizerOnDictationResult;
 	}
 
 	private void DictationRecognizerOnDictationResult(string text, ConfidenceLevel confidence)
