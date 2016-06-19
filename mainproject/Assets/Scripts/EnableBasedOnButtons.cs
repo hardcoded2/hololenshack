@@ -32,9 +32,9 @@ public class EnableBasedOnButtons : MonoBehaviour
 		System.Action keywordAction;
 		if(keywords.TryGetValue(args.text, out keywordAction))
 		{
-			keywordAction.Invoke();
 			keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
 			keywordRecognizer.Stop();
+			keywordAction.Invoke();
 		}
 	}
 
