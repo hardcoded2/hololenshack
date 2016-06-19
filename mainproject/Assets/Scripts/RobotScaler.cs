@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 
 public class RobotScaler : MonoBehaviour {
-	[NonSerialized]public Vector3 robotScale = new Vector3(1f, 1f, 1f);
+	[NonSerialized]public Vector3 robotScale = new Vector3(.1f, .1f, .1f);
 	// Use this for initialization
 	void Start ()
 	{
