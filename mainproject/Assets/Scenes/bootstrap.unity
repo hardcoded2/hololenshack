@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &233850393
 Transform:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
     triggerToUse: warriors
   - phrase: what weather like
     triggerToUse: weather
-  toPlayOn: {fileID: 0}
+  toPlayOn: {fileID: 1886095930}
 --- !u!1 &1317101760 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013983205698, guid: 8e03860d37f0011469d1cbfe5538abcb,
@@ -1085,6 +1085,11 @@ BoxCollider:
 --- !u!1 &1886095929 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100612, guid: 9be643091946d1649b383d0788495016, type: 3}
+  m_PrefabInternal: {fileID: 1031236405}
+--- !u!95 &1886095930 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 9be643091946d1649b383d0788495016,
+    type: 3}
   m_PrefabInternal: {fileID: 1031236405}
 --- !u!1 &2041268699
 GameObject:
