@@ -43,5 +43,6 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 		//_Visualizer = Instantiate(_prefabToSpawn);//GameObject.CreatePrimitive(PrimitiveType.Cube);
 		_Visualizer.transform.localScale = 0.25f*Vector3.one;
 		_Visualizer.transform.position = positionToSpawnAt;
+		_Visualizer.transform.LookAt(Camera.main.transform);
 	}
 }
