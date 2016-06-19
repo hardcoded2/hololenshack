@@ -34,6 +34,9 @@ public class EnableBasedOnButtons : MonoBehaviour
 		{
 			keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
 			keywordRecognizer.Stop();
+			keywordRecognizer.Dispose();
+			PhraseRecognitionSystem.Shutdown();
+			gameObject.SetActive(false);
 			keywordAction.Invoke();
 		}
 	}
@@ -51,7 +54,12 @@ public class EnableBasedOnButtons : MonoBehaviour
 	}
 	public void OnDisable()
 	{
-		keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
-		keywordRecognizer.Stop();
+		if(keywordRecognizer != null)
+		{
+			keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
+			keywordRecognizer.Stop();
+			keywordRecognizer.Dispose();
+		}
+		
 	}
 }
