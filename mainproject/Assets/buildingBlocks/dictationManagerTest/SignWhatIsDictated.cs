@@ -33,6 +33,7 @@ public class SignWhatIsDictated : MonoBehaviour
 	public void OnDisable()
 	{
 		dictationRecognizer.DictationResult -= DictationRecognizerOnDictationResult;
+		dictationRecognizer.Stop();
 	}
 
 	private void DictationRecognizerOnDictationResult(string text, ConfidenceLevel confidence)

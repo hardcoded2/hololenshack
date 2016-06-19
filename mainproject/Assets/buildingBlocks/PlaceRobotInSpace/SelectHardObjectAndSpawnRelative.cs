@@ -3,33 +3,27 @@ using UnityEngine.VR.WSA.Input;
 
 public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 {
-#pragma warning disable 649
-	[SerializeField] private GameObject _prefabToSpawn;
-#pragma warning restore 649
-	private GameObject _spawnedPrefab;
+	[SerializeField]
+	private GameObject _Visualizer;
 	[SerializeField] private readonly Vector3 offsetFromTarget = new Vector3(.5f, 0f, 0f);
 
 	private GestureRecognizer recognizer;
-	public GameObject FocusedObject { get {return _spawnedPrefab;} }
+	public GameObject FocusedObject { get {return _Visualizer;} }
 
 	// Use this for initialization
-	private void Start()
+	private void OnEnable()
 	{
 		recognizer = new GestureRecognizer();
 		recognizer.TappedEvent += RecognizerOnTappedEvent;
 		recognizer.SetRecognizableGestures(GestureSettings.Tap);
 		recognizer.StartCapturingGestures();
-		//FakeSpawn();
 	}
 
-	[ContextMenu("FakeSpawn")]
-	void FakeSpawn()
+	private void OnDisable()
 	{
-		//note: transform.up not working the way I expect
-		var camDirection = Camera.main.transform.up *0.91f + new Vector3(0f, 0f, -9.59f);
-		spawn(camDirection);
+		recognizer.StopCapturingGestures();
 	}
-
+	
 	private void RecognizerOnTappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
 	{
 		//Debug.Log("Recognized Gesture headray:"+JsonUtility.ToJson(headRay));
@@ -42,20 +36,12 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 30.0f, SpatialMapping.PhysicsRaycastMask))
 			spawn(hit.point + offsetFromTarget);
 	}
-	/*
-	 * 
-		Debug.Log("Spawn");
-		var spawned = _spawnedPrefab ?? Instantiate(_prefabToSpawn);
-		spawned.transform.position = positionToSpawnAt;
-		spawned.transform.LookAt(Camera.main.transform.position);
-		_spawnedPrefab = spawned;
-	 */
+
 	private void spawn(Vector3 positionToSpawnAt)
 	{
-		if(_spawnedPrefab != null) Destroy(_spawnedPrefab);
-
-		_spawnedPrefab = Instantiate(_prefabToSpawn);//GameObject.CreatePrimitive(PrimitiveType.Cube);
-		_spawnedPrefab.transform.localScale = 0.25f*Vector3.one;
-		_spawnedPrefab.transform.position = positionToSpawnAt;
+		//if(_Visualizer == null) Instantiate(_prefabToSpawn);
+		//_Visualizer = Instantiate(_prefabToSpawn);//GameObject.CreatePrimitive(PrimitiveType.Cube);
+		_Visualizer.transform.localScale = 0.25f*Vector3.one;
+		_Visualizer.transform.position = positionToSpawnAt;
 	}
 }
