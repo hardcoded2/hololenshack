@@ -15,7 +15,7 @@ PlayerSettings:
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenStyle: 0
   m_ShowUnitySplashScreen: 0
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: be92bbf7d453845798192f003d9aa063,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 63612e631203e264bab09ea0cbe007bc,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -181,7 +181,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1e4cb61abd0444f72a3894981cd9a1aa, type: 3}
+      m_Icon: {fileID: 2800000, guid: 63612e631203e264bab09ea0cbe007bc, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
