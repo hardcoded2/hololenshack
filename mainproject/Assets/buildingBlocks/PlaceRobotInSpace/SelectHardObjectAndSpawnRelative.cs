@@ -17,8 +17,10 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 		recognizer.TappedEvent += RecognizerOnTappedEvent;
 		recognizer.SetRecognizableGestures(GestureSettings.Tap);
 		recognizer.StartCapturingGestures();
-        RecognizerOnTappedEvent(InteractionSourceKind.Other, 1, new Ray(Camera.main.transform.position, Camera.main.transform.forward));
-    }
+		spawn(Camera.main.transform.position + Camera.main.transform.forward * 2f);
+		//RecognizerOnTappedEvent(InteractionSourceKind.Other, 1, new Ray(Camera.main.transform.position, Camera.main.transform.forward));
+		//RecognizerOnTappedEvent(InteractionSourceKind.Other, 1, new Ray(Camera.main.transform.position, Camera.main.transform.forward));
+	}
 
 	private void OnDisable()
 	{
@@ -34,8 +36,13 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 		//layerMask:SpatialMapping.PhysicsRaycastMask
 		
 		//FakeSpawn();
-		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 30.0f, SpatialMapping.PhysicsRaycastMask))
+		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 30.0f,
+			SpatialMapping.PhysicsRaycastMask))
 			spawn(hit.point + offsetFromTarget);
+		else
+		{
+			spawn(Camera.main.transform.position + Camera.main.transform.forward * 2f);
+		}
 	}
 
 	private void spawn(Vector3 positionToSpawnAt)

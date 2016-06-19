@@ -32,12 +32,13 @@ public class WorldCursor : MonoBehaviour
 	    Debug.Log("Tapped");
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo))
         {
-			Debug.Log("Hit");
+			
             GameObject hitObj = hitInfo.collider.gameObject;
-
-            if(hitObj)
+			
+			if(hitObj)
             {
-                if (hitObj.GetInstanceID() == teachQuad.GetInstanceID())
+				Debug.Log("Hit:" + hitObj.gameObject.name);
+				if (hitObj.GetInstanceID() == teachQuad.GetInstanceID())
                 {
                     Debug.Log("raycast hit teach quad");
                     switchGO.TeachMeToSign();
