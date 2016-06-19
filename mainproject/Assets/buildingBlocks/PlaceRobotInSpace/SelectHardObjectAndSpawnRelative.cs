@@ -17,8 +17,8 @@ public class SelectHardObjectAndSpawnRelative : MonoBehaviour
 		recognizer.TappedEvent += RecognizerOnTappedEvent;
 		recognizer.SetRecognizableGestures(GestureSettings.Tap);
 		recognizer.StartCapturingGestures();
-		RecognizerOnTappedEvent(InteractionSourceKind.Other, 1, new Ray(Camera.main.transform.position, Camera.main.transform.forward));
-	}
+        RecognizerOnTappedEvent(InteractionSourceKind.Other, 1, new Ray(Camera.main.transform.position, Camera.main.transform.forward));
+    }
 
 	private void OnDisable()
 	{
